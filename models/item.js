@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const SchemaItem = new mongoose.Schema({
-  user_id: {
+ user_id: {
     type: String,
-    required: true,
+    //required: true,
   },
   receiver_id: {
     type: String,
@@ -28,7 +28,7 @@ const SchemaItem = new mongoose.Schema({
   },
   expected_exchange: {
     type: String,
-  },
+  }
 });
 
 const Item = mongoose.model("Item", SchemaItem);

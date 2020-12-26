@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 const { uuid } = require("uuidv4");
+const Item=require("../models/item.js");
 //multer setting
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -16,9 +17,22 @@ var upload = multer({
   storage: storage,
 });
 
-router.post("/", upload.single("file"), (req, res) => {
+router.post("/", //upload.single("file")
+ (req, res) => {
   try {
-    
+    const {item_name,item_type,item_description,expected_exchange}=req.body;
+    console.log("itemname"+ item_name+ " itemtype"+ item_type+ " description"+ item_description+ " exchange"+ expected_exchange);
+    const newItem=new Item({
+        item_name:item_name,
+        item_type:item_type,
+        item_description:item_description,
+        expected_exchange:expected_exchange
+    });
+    newItem.save()
+    .then((value)=>{
+        console.log(value);
+    })
+    .catch(value=>console.log(value));
     res.status(400).send("ok");
   } catch (err) {
     res.status(400).send(err);
