@@ -17,8 +17,7 @@ var upload = multer({
   storage: storage,
 });
 
-router.post("/", //upload.single("file")
- (req, res) => {
+router.post("/", upload.single("file"),(req, res) => {
   try {
     const {item_name,item_type,item_description,expected_exchange}=req.body;
     console.log("itemname"+ item_name+ " itemtype"+ item_type+ " description"+ item_description+ " exchange"+ expected_exchange);
