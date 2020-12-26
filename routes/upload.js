@@ -18,8 +18,8 @@ var upload = multer({
 
 router.post("/", upload.single("file"), (req, res) => {
   try {
-    
-    res.status(400).send("ok");
+ pathhere = req.file.path;
+    res.send({ path: pathhere.slice(8, pathhere.length) });
   } catch (err) {
     res.status(400).send(err);
   }
