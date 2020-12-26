@@ -45,4 +45,6 @@ app.use((req,res,next)=>{
 app.use('/',require('./routes/index'));
 app.use('/users',require('./routes/users'));
 
+app.use("/item", require("./routes/item"));
+app.use("/upload", require("./routes/upload"));
 app.listen(7000,()=>console.log('server is listening to port 7000'));
