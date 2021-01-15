@@ -7,10 +7,11 @@ const router = express.Router();
 // @route   /api/item/
 // @desc    route for getting active items
 router.get("/", async (req, res) => {
-  const item = await Item.findOne({
-    item_status: true,
-  });
-  res.send(item);
+  //const item = await Item.findOne({
+    //item_status: true,
+  //});
+  //res.send(item);
+  res.render("viewproduct");
 });
 
 // @type    POST

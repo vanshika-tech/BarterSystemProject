@@ -14,4 +14,8 @@ router.get('/dashboard',ensureAuthenticated,(req,res)=>{
         user:req.user
     });
 })
+
+router.get('/clientupload',(req,res)=>{
+    res.render('clientupload');
+})
 module.exports=router;
