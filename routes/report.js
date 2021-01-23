@@ -1,4 +1,5 @@
 const express=require("express");
+const nodemailer=require('nodemailer');
 const router=express.Router();
 const reportData=require("../models/report.js");
 
@@ -18,7 +19,28 @@ router.post('/',(req,res)=>{
            report_about:report_about,
            description:description
         });
-    
+        var transpoter=nodemailer.createTransport({
+            service:'gmail',
+            auth:{
+                user:'vanshikasundrani1998@gmail.com',
+                pass:'Vanshika@1998'
+            }
+        });
+
+        var mailOptions={
+            from:'vanshikasundrani1998@gmail.com',
+            to:email,
+            subject:report_about,
+            text:description
+        };
+
+        transpoter.sendMail(mailOptions,function(error,info){
+            if(error){
+                console.log(error);
+            }else{
+                console.log('Email Sent:'+info.response);
+            }
+        });
         newReport.save()
         .then((value)=>{
             console.log(value);
