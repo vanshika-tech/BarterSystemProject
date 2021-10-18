@@ -33,6 +33,8 @@ app.use(session({
     saveUninitialized:true
 }));
 app.use(passport.initialize());
+
+// 
 app.use(passport.session());
 //flash
 app.use(flash());
